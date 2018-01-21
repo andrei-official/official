@@ -1,10 +1,33 @@
-namespace Tries
+using System;
+
+namespace Official
 {   
     public class TrieNode
     {
         public TrieNode()
         {
             Children = new TrieNode[26];
+        }
+
+        public static void Run()
+        {
+            var root = new TrieNode();
+            var line = Console.ReadLine();
+            while (!string.IsNullOrEmpty(line))
+            {
+                var input = line.Split(' ');
+                switch(input[0])
+                {
+                    case "add":
+                        root.Add(input[1]);
+                        break;
+                    case "find":
+                        Console.WriteLine(root.Find(input[1]));
+                        break;
+                }
+
+                line = Console.ReadLine();
+            }
         }
 
         public TrieNode[] Children { get; }
